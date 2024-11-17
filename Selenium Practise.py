@@ -1,67 +1,85 @@
-#Implicit wait  -
-#Explicit Wait
-from logging import log
 import time
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.select import Select
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
-service_obj=Service("C:\\DRIVERS\\Chrome Driver V131\\chromedriver.exe")
+# Service object for ChromeDriver
+service_obj = Service("C:\\DRIVERS\\Chrome Driver V131\\chromedriver.exe")
 driver = webdriver.Chrome(service=service_obj)
-driver.implicitly_wait(5)
-list = []
-list2 = []
-# wait until 5 seconds if object is not displayed
-#Global wait
-#1.5 second to reach next page- execution will resume in 1.5 seconds
-#if object do not show up at all, then max time your test waits for 5 seconds
-driver.get("https://rahulshettyacademy.com/seleniumPractise/")
-driver.find_elements(By.XPATH,('//input[@class="search-keyword"]'))
-# find_element(By.CSS_SELECTOR,("input.search-keyword").send_keys("ber")
-time.sleep(4)
-count =len(driver.find_elements(By.XPATH,("//div[@class='products']/div")))
-print(f"Count:",count)
-assert count == 30
-buttons = driver.find_elements(By.XPATH,("//div[@class='product-action']/button"))
 
+# Implicit wait
+driver.implicitly_wait(5)
+
+# Lists to hold product names
+selected_products = []
+cart_products = []
+
+# Open the website
+driver.get("https://rahulshettyacademy.com/seleniumPractise/")
+
+# Search for products
+search_box = driver.find_element(By.CSS_SELECTOR, "input.search-keyword")
+search_box.send_keys("ber")
+time.sleep(4)  # Wait for products to load
+
+# Count products and assert
+products = driver.find_elements(By.XPATH, "//div[@class='products']/div")
+print(f"Count: {len(products)}")
+assert len(products) > 0, "No products found!"
+
+# Add products to cart
+buttons = driver.find_elements(By.XPATH, "//div[@class='product-action']/button")
 for button in buttons:
-    list.append(button.find_element(By.XPATH, "parent::div/parent::div/h4").text)
+    product_name = button.find_element(By.XPATH, "parent::div/parent::div/h4").text
+    selected_products.append(product_name)
     button.click()
 
-print(list)
+print("Selected Products:", selected_products)
 
-driver.find_element(By.CSS_SELECTOR,("img[alt='Cart']")).click()
-driver.find_element(By.XPATH,("//button[text()='PROCEED TO CHECKOUT']")).click()
+# Proceed to checkout
+driver.find_element(By.CSS_SELECTOR, "img[alt='Cart']").click()
+driver.find_element(By.XPATH, "//button[text()='PROCEED TO CHECKOUT']").click()
+
+# Wait for promo code field to load
 wait = WebDriverWait(driver, 5)
-wait.until(expected_conditions.presence_of_element_located((By.CLASS_NAME, "promoCode")))
-veggies =driver.find_elements(By.CSS_SELECTOR,("p.product-name"))
-for l in veggies:
-    list2.append(l.text)
+wait.until(EC.presence_of_element_located((By.CLASS_NAME, "promoCode")))
 
-print(list2)
-assert list == list2
+# Verify products in the cart
+veggies = driver.find_elements(By.CSS_SELECTOR, "p.product-name")
+for veg in veggies:
+    cart_products.append(veg.text)
 
-amount1= driver.find_element(By.CSS_SELECTOR,(".discountAmt")).text
+print("Cart Products:", cart_products)
+assert selected_products == cart_products, "Products in cart do not match selected products!"
 
-driver.find_element(By.CLASS_NAME,("promoCode")).send_keys("rahulshettyacademy")
-driver.find_element(By.CSS_SELECTOR,(".promoBtn")).click()
-print(driver.find_element(By.CSS_SELECTOR, "span.promoInfo").text)
+# Get initial amount
+amount1 = float(driver.find_element(By.CSS_SELECTOR, ".discountAmt").text)
+print(f"amount1:", amount1)
 
-amount2= driver.find_element(By.CSS_SELECTOR, ".discountAmt").text
-print(f"amount2",amount2)
+# Apply promo code
+promo_code_box = driver.find_element(By.CLASS_NAME, "promoCode")
+promo_code_box.send_keys("rahulshettyacademy")
+driver.find_element(By.CSS_SELECTOR, ".promoBtn").click()
 
-assert int(amount1) > float(amount2)
+# Wait for promo info
+promo_info = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "span.promoInfo")))
+print("Promo Info:", promo_info.text)
 
-veggiesAmount = driver.find_elements(By.XPATH,("//tr/td[5]/p"))
-sum = 4000
+# Get discounted amount
+amount2 = float(driver.find_element(By.CSS_SELECTOR, ".discountAmt").text)
+print("Amount After Discount:", amount2)
 
-for v in veggiesAmount:
-    sum = sum + int(v.text)
+# Validate discount
+assert amount1 > amount2, "Discount not applied correctly!"
 
-print(sum)
+# Validate total price
+veggie_prices = driver.find_elements(By.XPATH, "//tr/td[5]/p")
+calculated_sum = sum([float(price.text) for price in veggie_prices])
+print("Calculated Total:", calculated_sum)
+# time.sleep(1000)
+assert calculated_sum >= amount2, "Sum of item prices does not match discounted total!"
 
-assert sum >= int(amount2)
+# Close the browser
+driver.quit()
