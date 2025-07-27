@@ -5,7 +5,7 @@ Library           OperatingSystem
 
 *** Variables ***
 ${BASE_URL}       https://rahulshettyacademy.com/seleniumPractise/
-${CHROME_DRIVER}  C:/DRIVERS/Chrome Driver V131/chromedriver.exe
+${CHROME_DRIVER}  E://Chrome Driver//chromedriver.exe
 ${SEARCH_TERM}    ber
 ${PROMO_CODE}     rahulshettyacademy
 ${calculated_sum}    0

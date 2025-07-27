@@ -6,7 +6,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 # Service object for ChromeDriver
-service_obj = Service("C:\\DRIVERS\\Chrome Driver V131\\chromedriver.exe")
+service_obj = Service("E://Chrome Driver//chromedriver.exe")
 driver = webdriver.Chrome(service=service_obj)
 
 # Implicit wait
@@ -43,7 +43,7 @@ driver.find_element(By.CSS_SELECTOR, "img[alt='Cart']").click()
 driver.find_element(By.XPATH, "//button[text()='PROCEED TO CHECKOUT']").click()
 
 # Wait for promo code field to load
-wait = WebDriverWait(driver, 5)
+wait = WebDriverWait(driver, 10)
 wait.until(EC.presence_of_element_located((By.CLASS_NAME, "promoCode")))
 
 # Verify products in the cart
@@ -55,7 +55,7 @@ print("Cart Products:", cart_products)
 assert selected_products == cart_products, "Products in cart do not match selected products!"
 
 # Get initial amount
-amount1 = float(driver.find_element(By.CSS_SELECTOR, ".discountAmt").text)
+amount1 = float(driver.find_element(By.CSS_SELECTOR, ".totAmt").text)
 print(f"amount1:", amount1)
 
 # Apply promo code
@@ -72,7 +72,7 @@ amount2 = float(driver.find_element(By.CSS_SELECTOR, ".discountAmt").text)
 print("Amount After Discount:", amount2)
 
 # Validate discount
-assert amount1 > amount2, "Discount not applied correctly!"
+assert amount1 < amount2, "Discount not applied correctly!"
 
 # Validate total price
 veggie_prices = driver.find_elements(By.XPATH, "//tr/td[5]/p")

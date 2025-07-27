@@ -4,7 +4,7 @@ Library           SeleniumLibrary
 *** Variables ***
 ${URL}            https://rahulshettyacademy.com/
 ${PRACTICE_URL}    https://rahulshettyacademy.com/AutomationPractice/
-${CHROMEDRIVER}    C:\\DRIVERS\\Chrome Driver V131\\chromedriver.exe    # Replace with your actual path
+${CHROMEDRIVER}    E://Chrome Driver//chromedriver.exe    
 
 *** Test Cases ***
 Basic Browser Operations
