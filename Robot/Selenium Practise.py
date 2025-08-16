@@ -72,7 +72,7 @@ amount2 = float(driver.find_element(By.CSS_SELECTOR, ".discountAmt").text)
 print("Amount After Discount:", amount2)
 
 # Validate discount
-assert amount1 < amount2, "Discount not applied correctly!"
+assert amount1 > amount2, "Discount not applied correctly!"
 
 # Validate total price
 veggie_prices = driver.find_elements(By.XPATH, "//tr/td[5]/p")
