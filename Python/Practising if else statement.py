@@ -1,3 +1,5 @@
+#Problem Statement:
+
 # Write a program that assigns a greeting to a variable.
 # Use an if statement to check if the greeting is "Hello".
 # If it matches, print "Hello there!" and "How can I assist you today?".
@@ -17,7 +19,7 @@
 
 #Code:
 greeting = "Pradnesh"
-greeting = "Hello"
+# greeting = "Hello"  # Change this to test different outputs  
 
 if greeting == "Hello":
     print("Hello there!")
