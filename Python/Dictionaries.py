@@ -10,7 +10,7 @@
 
 
 #Code
-car = {    "make": "Toyota", "model": "Camry", "year": 2020, "color": "Blue"}
+car = {"make": "Toyota", "model": "Camry", "year": 2020, "color": "Blue"}
 print("Car model:", car["model"])
 
 car["owner"] = "Rahul"
