@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.13.2 on win32)" generated="2025-09-04T19:47:01.622156" rpa="false" schemaversion="5">
+<suite id="s1" name="Robot" source="e:\Selenium\Selenium_Python\Robot">
+<suite id="s1-s1" name="Add to Cart and Apply Promo" source="e:\Selenium\Selenium_Python\Robot\Add to Cart and Apply Promo.robot">
+<test id="s1-s1-t1" name="Verify Shopping Cart Functionality" line="13">
+<kw name="Open Browser To Application">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-09-04T19:47:02.135851" level="WARN">exexcutable_path is being deprecated. Please use service to configure the driver's executable_path as per documentation.</msg>
+<msg time="2025-09-04T19:47:02.139302" level="INFO">Opening browser 'chrome' to base url 'https://rahulshettyacademy.com/seleniumPractise/'.</msg>
+<arg>${BASE_URL}</arg>
+<arg>chrome</arg>
+<arg>executable_path=${CHROME_DRIVER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-09-04T19:47:02.135367" elapsed="3.460944"/>
+</kw>
+<kw name="Set Selenium Implicit Wait" owner="SeleniumLibrary">
+<arg>5</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" start="2025-09-04T19:47:05.597957" elapsed="0.003919"/>
+</kw>
+<status status="PASS" start="2025-09-04T19:47:02.133387" elapsed="3.469368"/>
+</kw>
+<kw name="Search And Add Products">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-09-04T19:47:05.609343" level="INFO">Typing text 'ber' into text field 'css:input.search-keyword'.</msg>
+<msg time="2025-09-04T19:47:05.632226" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=139.0.7258.139)
+Stacktrace:
+	GetHandleVerifier [0x0x7ff76368e935+77845]
+	GetHandleVerifier [0x0x7ff76368e990+77936]
+	(No symbol) [0x0x7ff763449cda]
+	(No symbol) [0x0x7ff7634221a1]
+	(No symbol) [0x0x7ff7634cfc6e]
+	(No symbol) [0x0x7ff7634f0432]
+	(No symbol) [0x0x7ff7634c86a3]
+	(No symbol) [0x0x7ff763491791]
+	(No symbol) [0x0x7ff763492523]
+	GetHandleVerifier [0x0x7ff76396684d+3059501]
+	GetHandleVerifier [0x0x7ff763960c0d+3035885]
+	GetHandleVerifier [0x0x7ff763980400+3164896]
+	GetHandleVerifier [0x0x7ff7636a8c3e+185118]
+	GetHandleVerifier [0x0x7ff7636b054f+216111]
+	GetHandleVerifier [0x0x7ff7636972e4+113092]
+	GetHandleVerifier [0x0x7ff763697499+113529]
+	GetHandleVerifier [0x0x7ff76367e298+10616]
+	BaseThreadInitThunk [0x0x7ffe9377e8d7+23]
+	RtlUserThreadStart [0x0x7ffe94e3c34c+44]
+</msg>
+<msg time="2025-09-04T19:47:05.653823" level="FAIL">NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=139.0.7258.139)
+Stacktrace:
+	GetHandleVerifier [0x0x7ff76368e935+77845]
+	GetHandleVerifier [0x0x7ff76368e990+77936]
+	(No symbol) [0x0x7ff763449cda]
+	(No symbol) [0x0x7ff7634221a1]
+	(No symbol) [0x0x7ff7634cfc6e]
+	(No symbol) [0x0x7ff7634f0432]
+	(No symbol) [0x0x7ff7634c86a3]
+	(No symbol) [0x0x7ff763491791]
+	(No symbol) [0x0x7ff763492523]
+	GetHandleVerifier [0x0x7ff76396684d+3059501]
+	GetHandleVerifier [0x0x7ff763960c0d+3035885]
+	GetHandleVerifier [0x0x7ff763980400+3164896]
+	GetHandleVerifier [0x0x7ff7636a8c3e+185118]
+	GetHandleVerifier [0x0x7ff7636b054f+216111]
+	GetHandleVerifier [0x0x7ff7636972e4+113092]
+	GetHandleVerifier [0x0x7ff763697499+113529]
+	GetHandleVerifier [0x0x7ff76367e298+10616]
+	BaseThreadInitThunk [0x0x7ffe9377e8d7+23]
+	RtlUserThreadStart [0x0x7ffe94e3c34c+44]
+</msg>
+<arg>css:input.search-keyword</arg>
+<arg>${SEARCH_TERM}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="FAIL" start="2025-09-04T19:47:05.607281" elapsed="0.315940">NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=139.0.7258.139)
+Stacktrace:
+	GetHandleVerifier [0x0x7ff76368e935+77845]
+	GetHandleVerifier [0x0x7ff76368e990+77936]
+	(No symbol) [0x0x7ff763449cda]
+	(No symbol) [0x0x7ff7634221a1]
+	(No symbol) [0x0x7ff7634cfc6e]
+	(No symbol) [0x0x7ff7634f0432]
+	(No symbol) [0x0x7ff7634c86a3]
+	(No symbol) [0x0x7ff763491791]
+	(No symbol) [0x0x7ff763492523]
+	GetHandleVerifier [0x0x7ff76396684d+3059501]
+	GetHandleVerifier [0x0x7ff763960c0d+3035885]
+	GetHandleVerifier [0x0x7ff763980400+3164896]
+	GetHandleVerifier [0x0x7ff7636a8c3e+185118]
+	GetHandleVerifier [0x0x7ff7636b054f+216111]
+	GetHandleVerifier [0x0x7ff7636972e4+113092]
+	GetHandleVerifier [0x0x7ff763697499+113529]
+	GetHandleVerifier [0x0x7ff76367e298+10616]
+	BaseThreadInitThunk [0x0x7ffe9377e8d7+23]
+	RtlUserThreadStart [0x0x7ffe94e3c34c+44]
+</status>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>4</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-09-04T19:47:05.925205" elapsed="0.000630"/>
+</kw>
+<kw name="Get WebElements" owner="SeleniumLibrary">
+<var>${products}</var>
+<arg>xpath://div[@class='products']/div</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<status status="NOT RUN" start="2025-09-04T19:47:05.926987" elapsed="0.000618"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<var>${length}</var>
+<arg>${products}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="NOT RUN" start="2025-09-04T19:47:05.928514" elapsed="0.000631"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<var>${Evaluate}</var>
+<arg>"""${length}""" &gt; """0"""</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-09-04T19:47:05.930022" elapsed="0.000643"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>"""${Evaluate}""" == """True"""</arg>
+<arg>Log</arg>
+<arg>Elements are present</arg>
+<arg>ELSE</arg>
+<arg>Fail</arg>
+<arg>Elements are not present</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" start="2025-09-04T19:47:05.931703" elapsed="0.000779"/>
+</kw>
+<kw name="Get WebElements" owner="SeleniumLibrary">
+<var>${buttons}</var>
+<arg>xpath://div[@class='product-action']/button</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<status status="NOT RUN" start="2025-09-04T19:47:05.933448" elapsed="0.000585"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<var>${buttons_len}</var>
+<arg>${buttons}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="NOT RUN" start="2025-09-04T19:47:05.934897" elapsed="0.000587"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<var>${selected_products}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="NOT RUN" start="2025-09-04T19:47:05.936363" elapsed="0.000701"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Get Text" owner="SeleniumLibrary">
+<var>${product_name}</var>
+<arg>xpath=(//div[@class="products"]/div/h4)[${button}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-09-04T19:47:05.939339" elapsed="0.000958"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${selected_products}</arg>
+<arg>${product_name}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="NOT RUN" start="2025-09-04T19:47:05.941758" elapsed="0.000677"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-09-04T19:47:05.943254" elapsed="0.000518"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>(//*[contains(text(),"ADD TO CART")])[${button}]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-09-04T19:47:05.944662" elapsed="0.000752"/>
+</kw>
+<var name="${button}"/>
+<status status="NOT RUN" start="2025-09-04T19:47:05.938603" elapsed="0.007457"/>
+</iter>
+<var>${button}</var>
