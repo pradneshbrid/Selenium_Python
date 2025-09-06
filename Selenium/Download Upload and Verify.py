@@ -16,8 +16,6 @@ fruit_name = "Apple"
 newValue = "990"
 
 
-
-
 driver = webdriver.Chrome()
 driver.implicitly_wait(5)
 driver.get("https://rahulshettyacademy.com/upload-download-test/index.html")
