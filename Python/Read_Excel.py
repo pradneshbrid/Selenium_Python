@@ -1,9 +1,4 @@
 import openpyxl
-import time
-import os
-
-folder = "Screenshots"
-os.makedirs(folder, exist_ok=True)
 
 # Fetch Whole Excel
 def Fetch_Whole_Excel(SheetPath):
@@ -62,10 +57,7 @@ def update_excel_data(filePath, searchTerm, colName, new_value):
     sheet.cell(row=Dict["row"], column=Dict["col"]).value = new_value
     book.save(filePath)
 
-def screenshot(driver):
-    timestamp = time.strftime("%Y%m%d_%H%M%S")
-    filename = os.path.join(folder, f"screenshot_{timestamp}.png")
-    driver.save_screenshot(filename)
+
 
 # Calling Function's
 

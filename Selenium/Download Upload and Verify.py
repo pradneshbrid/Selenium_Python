@@ -8,7 +8,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 import sys
 
 sys.path.append(r"E:\Selenium\Selenium_Python\Python")
-import Read_Excel  
+import Read_Excel 
+import Screenshot 
 
 #Variables
 fruit_name = "Apple"
@@ -23,7 +24,7 @@ driver.get("https://rahulshettyacademy.com/upload-download-test/index.html")
 
 driver.find_element(By.ID, "downloadButton").click()
 time.sleep(2)
-Read_Excel.screenshot(driver)
+Screenshot.screenshot(driver)
 
 downloads_path = os.path.join(os.path.expanduser("~"), "Downloads")
 list_of_files = glob.glob(os.path.join(downloads_path, "*.xlsx"))
@@ -42,12 +43,12 @@ wait.until(EC.visibility_of_element_located(
 message = driver.find_element(By.XPATH, "//*[contains(text(),'Updated Excel Data Successfully.')]").text 
 assert "Updated Excel Data Successfully." in message
 print("✅ File uploaded successfully and message verified!")
-Read_Excel.screenshot(driver)
+Screenshot.screenshot(driver)
 
 priceColumn = driver.find_element(By.XPATH,"//div[text()='Price']").get_attribute("data-column-id")
 actual_price = driver.find_element(By.XPATH,"//div[text()='"+fruit_name+"']/parent::div/parent::div/div[@id='cell-"+priceColumn+"-undefined']").text
 assert actual_price == newValue
-Read_Excel.screenshot(driver)
+Screenshot.screenshot(driver)
 
 # time.sleep(300)
 
